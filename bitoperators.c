@@ -16,8 +16,8 @@
         1  0 | 1
         1  1 | 0
 
-     << <number>  == <number> * 2 
-     >> <number> == <number> // 2
+     << <number>  == <number> * 2 ** k 
+     >> <number> == <number> // 2 ** k (This is a power)
 
 */
 #include <stdio.h>
