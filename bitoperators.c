@@ -27,6 +27,7 @@
 // Function protypes tell the compiler what they return
 bool getBit(int num, int i);
 void checkAllBits(int num);
+void returnBinaryRep(int num);
 
 int main(){
    int a = 0x04;
@@ -36,6 +37,7 @@ int main(){
    bool bitt = getBit(0xff, 7);
    printf(bitt ? "True\n" : "False\n");
    checkAllBits(0xfe);
+   returnBinaryRep(0xfe);
    return 0;
 }
 
@@ -54,4 +56,18 @@ void checkAllBits(int num) {
          printf("Bit %d is set \n", i);
       }
    }
+}
+
+// Prints out the binary representation of a byte
+void returnBinaryRep(int num){
+   printf("Returning the Binary representation of %d\n", num);
+   for(int i=7; i>=0; i--){
+      if ((num & (1 << i)) != 0){
+         printf("1");
+      }
+      else {
+         printf("0");
+      }
+   }
+   printf("\n");
 }
