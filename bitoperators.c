@@ -17,11 +17,13 @@
         1  1 | 0
 
      << <number>  == <number> * 2 
+     >> <number> == <number> // 2
+
 */
 #include <stdio.h>
 int main(){
- int a = 0x01;
- a = a << 1;
+ int a = 0x04;
+ a = a >> 2;
  printf("value of a: %X [%x]\n",a,a);
 
  return 0;
