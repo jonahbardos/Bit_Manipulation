@@ -22,12 +22,15 @@
 */
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+#include <math.h>
 #define SWAP(a,b) a^=b; b^=a; a^=b; // multiple statements require semi-colons
 
 // Function protypes tell the compiler what they return
 bool getBit(int num, int i);
 void checkAllBits(int num);
 void returnBinaryRep(int num);
+void convertToNum(char *arr, int sizee);
 
 int main(){
    int a = 0x04;
@@ -38,6 +41,9 @@ int main(){
    printf(bitt ? "True\n" : "False\n");
    checkAllBits(0xfe);
    returnBinaryRep(0xfe);
+
+   char arr[8] = {'1', '1', '1', '1','1', '1', '1', '1'};
+   convertToNum(arr, 8);
    return 0;
 }
 
@@ -47,6 +53,7 @@ int main(){
 bool getBit(int num, int i){
    return ((num & (1 << i)) != 0);
 }
+
 
 // Checks all the bits that are set in a byte
 void checkAllBits(int num) {
@@ -70,4 +77,18 @@ void returnBinaryRep(int num){
       }
    }
    printf("\n");
+}
+
+
+// Convert a binary string to number
+void convertToNum(char *arr, int sizee){
+   double summ = 0;
+   for (int i = 0; i < sizee; i++)
+   {  
+      // printf("%c %f\n", arr[i], pow(2, sizee - 1 - i));
+      if (arr[i] != '0'){
+         summ += pow(2, sizee - 1 - i);
+      }
+   }
+   printf("Sum = %f\n", summ);
 }
