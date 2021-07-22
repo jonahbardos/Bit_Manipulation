@@ -24,6 +24,8 @@
 #include <stdbool.h>
 #include <string.h>
 #include <math.h>
+#include <stdint.h>
+#include <stdlib.h>
 #define SWAP(a,b) a^=b; b^=a; a^=b; // multiple statements require semi-colons
 
 // Function protypes tell the compiler what they return
@@ -31,6 +33,7 @@ bool getBit(int num, int i);
 void checkAllBits(int num);
 void returnBinaryRep(int num);
 void convertToNum(char *arr, int sizee);
+void swapBits(uint8_t* b);
 
 int main(){
    int a = 0x04;
@@ -44,6 +47,10 @@ int main(){
 
    char arr[8] = {'1', '1', '1', '1','1', '1', '1', '1'};
    convertToNum(arr, 8);
+
+   uint8_t mypointer = 100;
+   uint8_t *t = &mypointer;
+   swapBits(t);
    return 0;
 }
 
@@ -91,4 +98,18 @@ void convertToNum(char *arr, int sizee){
       }
    }
    printf("Sum = %f\n", summ);
+}
+
+
+/**
+ * Swap 2 nibbles in a byte
+ * (e.g) 0xCF -> Answer: 0xFC
+*/
+void swapBits(uint8_t* b)
+{
+   uint8_t *x;
+   // *x = (*b & 0x0F); // Grab the last nibble (0x0F) and move it to be the MSB
+   // *y = (*b & 0xF0); // Grab the first nibble (0xC0) and move it to the LSB
+   *b = ((*b & 0x0F) << 4 | (*b & 0xF0) >> 4);
+   printf("%d\n", *b);
 }
